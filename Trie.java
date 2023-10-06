@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
+//class TrieNode
 class TrieNode {
     Map<Character, TrieNode> children;
     boolean isEndOfWord;
