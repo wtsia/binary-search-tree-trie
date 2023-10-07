@@ -1,7 +1,7 @@
 //BST class
 
 /**
- * The BinaryTree class implements a binary search tree. A binary search tree (BST) 
+ * The BST class implements a binary search tree. A binary search tree (BST) 
  * is a useful form of a binary tree. A BST has an ordering property where any
  * node's left subtree keys ≤ the node's key, and the right subtree's keys ≥ the
  * node's key, enables faster searching for an item.
@@ -9,17 +9,17 @@
  * @param <T> generic format, yet specifically a string in this lab.
  */
 
-public class BinaryTree<T extends Comparable<T>> {
+public class BST<T extends Comparable<T>> {
 
 	private BSTNode<T> root;
 
 	// constructor
-	public BinaryTree() {
+	public BST() {
 		root = null;
 	}
 
 	// constructor
-	public BinaryTree(T title) {
+	public BST(T title) {
 		root = new BSTNode<T>(title);
 	}
 
@@ -58,7 +58,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 */
 	
 	// delete
-	private boolean delete(T item) {
+	protected boolean delete(T item) {
 		BSTNode<T> parent = null;
 		BSTNode<T> pointer = root;
 
@@ -128,7 +128,7 @@ public class BinaryTree<T extends Comparable<T>> {
 	 * @return the new node.
 	 */
 //insert
-	private BSTNode<T> insert(T data) {
+	protected BSTNode<T> insert(T data) {
 
 		BSTNode<T> temp = new BSTNode<T>(data);
 		if (root == null) {
@@ -138,7 +138,7 @@ public class BinaryTree<T extends Comparable<T>> {
 		return insert(data, root);
 	}
 
-	private BSTNode<T> insert(T data, BSTNode<T> pointer) {
+	protected BSTNode<T> insert(T data, BSTNode<T> pointer) {
 
 		BSTNode<T> temp = new BSTNode<T>(data);
 		
@@ -176,11 +176,11 @@ public class BinaryTree<T extends Comparable<T>> {
 	 */
 	
 	// search
-	private BSTNode<T> search(T item) {
+	protected BSTNode<T> search(T item) {
 		return search(item, root);
 	}
 
-	private BSTNode<T> search(T item, BSTNode<T> root) {
+	protected BSTNode<T> search(T item, BSTNode<T> root) {
 		if (root == null) {
 			return null;
 		}
@@ -216,8 +216,8 @@ public class BinaryTree<T extends Comparable<T>> {
 	}
 
 	public static void main(String[] args) {
-		BinaryTree<String> bookTitles;
-		bookTitles = new BinaryTree<String>();
+		BST<String> bookTitles;
+		bookTitles = new BST<String>();
 
 		// insertion
 		bookTitles.insert("The Great Gatsby");
