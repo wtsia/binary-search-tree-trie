@@ -3,15 +3,14 @@
 Implement both a Binary Search Tree (BST) and a Trie and compare the operation speeds within the context of a real-world scenario: a cataloging system for a library.
 
 # Part 1: Implementing Data Structures
-* Implement a BST.
+* A) Implement a BST.
+* Each node should have a string value representing a book title.
+* Implement insertion, deletion, and search operations.
 
-** Each node should have a string value representing a book title.
-** Implement insertion, deletion, and search operations.
+* B) Implement a Trie.
 
-* Implement a Trie.
-
-** Each node should represent a character of a book title.
-** Implement insertion, deletion, and search operations.
+* Each node should represent a character of a book title.
+* Implement insertion, deletion, and search operations.
 
 # Part 2: Operation Speed Comparison
 1. Insertion:
