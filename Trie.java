@@ -23,27 +23,27 @@ public class Trie {
     }
 
     /**
-     * Inserts a new string into the trie.
+     * Inserts a new string (title) into the Trie data structure.
      *
-     * @param string the string to insert.
+     * @param title The title to insert into the Trie.
+     * @return The TrieNode representing the end of the inserted string.
      */
-    public void insert(String title) {
-        // Implement the insertion logic here.
-        TrieNode trieNode = root;
-        
-        for (char ch: title.toCharArray()){     //loop over each character in the title.
-            TrieNode node = trieNode.children.get(ch);   //assign a child value for the character
-            // If the child node does not exist, create a new one.
-            if (node == null) {
-                node = new TrieNode();
-                trieNode.children.put(ch, node);
-            }
-            trieNode = node; // Move the pointer
+    public TrieNode insert(String title) {
+        TrieNode trieNode = root;      // Start at the root Trie node
+        for (char character : title.toCharArray()) {           // Iterate over each character 
+            if (!trieNode.children.containsKey(character)) {
+                TrieNode newNode = new TrieNode();             
+                trieNode.children.put(character, newNode);    // create a new TrieNode for it If the character is not in the children.
+            }            
+            trieNode = trieNode.children.get(character);      // Move to the child TrieNode.
         }
-        trieNode.endOfTitle = true;
+        if (!trieNode.children.containsKey('0')) {
+            TrieNode newNode = new TrieNode(); 
+            trieNode.children.put('0', newNode); // After successfully inserting, create a note and insert 0
+        }
+        // Return the TrieNode corresponding to the end of the inserted string.
+        return trieNode.children.get('0');
     }
-
-
 
 
     /**
@@ -96,10 +96,9 @@ public class Trie {
         
         return removed;                        // Return true if the title was deleted
     }
+
     
     
-
-
     /**
      * Searches for a specific title in the Trie and returns the corresponding TrieNode.
      *
@@ -129,6 +128,5 @@ public class Trie {
         // If '0' is not found title is not in the Trie.
         return null;
     }
-
 
 }
