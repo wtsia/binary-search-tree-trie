@@ -96,27 +96,42 @@ public class Trie {
         
         return removed;                        // Return true if the title was deleted
     }
-
-
-
-
-    /**
-     * Searches for the given title in the trie.
-     *
-     * @param title the title to search for.
-     * @return true if the title is found, false otherwise.
-     */
     
-    public boolean search(String title) {
+    
 
-        TrieNode trieNode = root;                       // Start at the root node.
-        for (char ch: title.toCharArray()){             // Iterate each character in the title.
-            TrieNode node = trieNode.children.get(ch);  // Get the current character in the child node.
-            if (node == null) {                         // If no child node exist, then the title is not in the trie.
-                return false;
+    
+    /**
+     * Searches for a specific title in the Trie and returns the corresponding TrieNode.
+     *
+     * @param title The title to search for.
+     * @return The TrieNode that represents the end of the searched title, or null if not found.
+     */
+    public TrieNode search(String title) {
+        // Start at the root node of the Trie.
+        TrieNode trieNode = root;
+
+        // Iterate over each character in the input title.
+        for (char character : title.toCharArray()) {
+            // Check if the current character exists as a child node of the current TrieNode.
+            if (!trieNode.children.containsKey(character)) {
+                // If not found, return null, indicating that the title is not in the Trie.
+                return null;
             }
-            trieNode = node;                            // Move to the child node.
-        }     
-        return trieNode.endOfTitle;                                   // No terminal child node exists despite the title existing
+
+            // Move to the child TrieNode corresponding to the current character.
+            trieNode = trieNode.children.get(character);
+        }
+
+        // After successfully traversing the input title, check if the character '0' is a child node.
+        if (trieNode.children.containsKey('0')) {
+            // If '0' is found, print and return the corresponding child TrieNode.
+            System.out.println(trieNode.children.get('0'));
+            return trieNode.children.get('0');
+        }
+
+        // If '0' is not found, return null, indicating that the title is not in the Trie.
+        return null;
     }
+
+
 }
