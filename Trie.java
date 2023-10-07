@@ -99,7 +99,7 @@ public class Trie {
     
     
 
-    
+
     /**
      * Searches for a specific title in the Trie and returns the corresponding TrieNode.
      *
@@ -107,29 +107,26 @@ public class Trie {
      * @return The TrieNode that represents the end of the searched title, or null if not found.
      */
     public TrieNode search(String title) {
-        // Start at the root node of the Trie.
-        TrieNode trieNode = root;
+        TrieNode trieNode = root;        // Start at the root trie node 
 
-        // Iterate over each character in the input title.
-        for (char character : title.toCharArray()) {
-            // Check if the current character exists as a child node of the current TrieNode.
-            if (!trieNode.children.containsKey(character)) {
-                // If not found, return null, indicating that the title is not in the Trie.
+
+        for (char character : title.toCharArray()) {   // Iterate over each character in the input title.
+
+            if (!trieNode.children.containsKey(character)) { //check if exists
                 return null;
             }
 
-            // Move to the child TrieNode corresponding to the current character.
-            trieNode = trieNode.children.get(character);
+            trieNode = trieNode.children.get(character);  // Move corresponding to the current character.
+
         }
 
-        // After successfully traversing the input title, check if the character '0' is a child node.
         if (trieNode.children.containsKey('0')) {
-            // If '0' is found, print and return the corresponding child TrieNode.
+            // If '0' is found, print child TrieNode.
             System.out.println(trieNode.children.get('0'));
             return trieNode.children.get('0');
         }
 
-        // If '0' is not found, return null, indicating that the title is not in the Trie.
+        // If '0' is not found title is not in the Trie.
         return null;
     }
 
