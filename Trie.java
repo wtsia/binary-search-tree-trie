@@ -4,12 +4,12 @@ import java.util.Map;
 //class TrieNode
 class TrieNode {
     Map<Character, TrieNode> children;     // A map to store child nodes
-    boolean endOfWord;  //flag indicating whether this node marks the end of a word
+    boolean endOfTitle;  //flag indicating whether this node marks the end of a word
 
     //Constructs a new TrieNode.
     public TrieNode() {
         children = new HashMap<>();  //Initialize
-        endOfWord = false;
+        endOfTitle = false;
     }
 }
 
@@ -40,7 +40,7 @@ public class Trie {
             }
             trieNode = node; // Move the pointer
         }
-        trieNode.endOfWord = true;
+        trieNode.endOfTitle = true;
     }
 
 
@@ -106,6 +106,7 @@ public class Trie {
      * @param title the title to search for.
      * @return true if the title is found, false otherwise.
      */
+    
     public boolean search(String title) {
 
         TrieNode trieNode = root;                       // Start at the root node.
@@ -116,8 +117,6 @@ public class Trie {
             }
             trieNode = node;                            // Move to the child node.
         }     
-        return false;                                   // No terminal child node exists despite the word existing
+        return trieNode.endOfTitle;                                   // No terminal child node exists despite the title existing
     }
-
-
 }
