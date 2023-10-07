@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.time.Duration;
+import java.time.Instant;
 
 public class Tester {
 
@@ -8,53 +10,53 @@ public class Tester {
         List<String> bookTitles = generateRandomBookTitles(10000);
 
         // Create BST and Trie instances
-        BST bst = new BST();
+        BST<String> bst = new BST();
         Trie trie = new Trie();
 
         // Measure and compare insertion times
-        long startTime = System.nanoTime();
+        Instant startTime = Instant.now();
         for (String title : bookTitles) {
             bst.insert(title);
         }
-        long endTime = System.nanoTime();
-        long bstInsertionTime = endTime - startTime;
+        Instant endTime = Instant.now();
+        Duration bstInsertionTime = Duration.between(startTime, endTime);
 
-        startTime = System.nanoTime();
+        startTime = Instant.now();
         for (String title : bookTitles) {
             trie.insert(title);
         }
-        endTime = System.nanoTime();
-        long trieInsertionTime = endTime - startTime;
+        endTime = Instant.now();
+        Duration trieInsertionTime = Duration.between(startTime, endTime);
 
         // Measure and compare deletion times
-        startTime = System.nanoTime();
+        startTime = Instant.now();
         for (String title : bookTitles) {
             bst.delete(title);
         }
-        endTime = System.nanoTime();
-        long bstDeletionTime = endTime - startTime;
+        endTime = Instant.now();
+        Duration bstDeletionTime = Duration.between(startTime, endTime);
 
-        startTime = System.nanoTime();
+        startTime = Instant.now();
         for (String title : bookTitles) {
             trie.delete(title);
         }
-        endTime = System.nanoTime();
-        long trieDeletionTime = endTime - startTime;
+        endTime = Instant.now();
+        Duration trieDeletionTime = Duration.between(startTime, endTime);
 
         // Measure and compare search times
-        startTime = System.nanoTime();
+        startTime = Instant.now();
         for (String title : bookTitles) {
             bst.search(title);
         }
-        endTime = System.nanoTime();
-        long bstSearchTime = endTime - startTime;
+        endTime = Instant.now();
+        Duration bstSearchTime = Duration.between(startTime, endTime);
 
-        startTime = System.nanoTime();
+        startTime = Instant.now();
         for (String title : bookTitles) {
             trie.search(title);
         }
-        endTime = System.nanoTime();
-        long trieSearchTime = endTime - startTime;
+        endTime = Instant.now();
+        Duration trieSearchTime = Duration.between(startTime, endTime);
 
         // Display results
         System.out.println("BST Insertion Time: " + bstInsertionTime + " nanoseconds");
