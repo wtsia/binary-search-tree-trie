@@ -14,7 +14,7 @@ public class Tester {
         // Measure and compare insertion times
         long startTime = System.nanoTime();
         for (String title : bookTitles) {
-         //   bst.insert(title);
+            bst.insert(title);
         }
         long endTime = System.nanoTime();
         long bstInsertionTime = endTime - startTime;
@@ -29,10 +29,11 @@ public class Tester {
         // Measure and compare deletion times
         startTime = System.nanoTime();
         for (String title : bookTitles) {
-         //   bst.delete(title);
+            bst.delete(title);
         }
         endTime = System.nanoTime();
         long bstDeletionTime = endTime - startTime;
+
         startTime = System.nanoTime();
         for (String title : bookTitles) {
             trie.delete(title);
@@ -40,11 +41,10 @@ public class Tester {
         endTime = System.nanoTime();
         long trieDeletionTime = endTime - startTime;
 
-
         // Measure and compare search times
         startTime = System.nanoTime();
         for (String title : bookTitles) {
-         //   bst.search(title);
+            bst.search(title);
         }
         endTime = System.nanoTime();
         long bstSearchTime = endTime - startTime;
