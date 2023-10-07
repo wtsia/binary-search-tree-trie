@@ -22,12 +22,14 @@ public class Trie {
         root = new TrieNode();    //Constructs a new trie.
     }
 
+    
+
     /**
      * Inserts a new string (title) into the Trie data structure.
      *
      * @param title The title to insert into the Trie.
      * @return The TrieNode representing the end of the inserted string.
-     */
+    */
     public TrieNode insert(String title) {
         TrieNode trieNode = root;      // Start at the root Trie node
         for (char character : title.toCharArray()) {           // Iterate over each character 
@@ -44,7 +46,7 @@ public class Trie {
         // Return the TrieNode corresponding to the end of the inserted string.
         return trieNode.children.get('0');
     }
-
+ 
 
     /**
      * Deletes the given title from the trie.
@@ -98,7 +100,6 @@ public class Trie {
     }
 
     
-    
     /**
      * Searches for a specific title in the Trie and returns the corresponding TrieNode.
      *
@@ -121,7 +122,6 @@ public class Trie {
 
         if (trieNode.children.containsKey('0')) {
             // If '0' is found, print child TrieNode.
-            System.out.println(trieNode.children.get('0'));
             return trieNode.children.get('0');
         }
 
