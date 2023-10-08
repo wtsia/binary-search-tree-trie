@@ -28,21 +28,6 @@ public class Tester {
         endTime = Instant.now();
         Duration trieInsertionTime = Duration.between(startTime, endTime);
 
-        // Measure and compare deletion times
-        startTime = Instant.now();
-        for (String title : bookTitles) {
-            bst.delete(title);
-        }
-        endTime = Instant.now();
-        Duration bstDeletionTime = Duration.between(startTime, endTime);
-
-        startTime = Instant.now();
-        for (String title : bookTitles) {
-            trie.delete(title);
-        }
-        endTime = Instant.now();
-        Duration trieDeletionTime = Duration.between(startTime, endTime);
-
         // Measure and compare search times
         startTime = Instant.now();
         for (String title : bookTitles) {
@@ -58,13 +43,31 @@ public class Tester {
         endTime = Instant.now();
         Duration trieSearchTime = Duration.between(startTime, endTime);
 
+        // Measure and compare deletion times
+        startTime = Instant.now();
+        for (String title : bookTitles) {
+            bst.delete(title);
+        }
+        endTime = Instant.now();
+        Duration bstDeletionTime = Duration.between(startTime, endTime);
+
+        startTime = Instant.now();
+        for (String title : bookTitles) {
+            trie.delete(title);
+        }
+        endTime = Instant.now();
+        Duration trieDeletionTime = Duration.between(startTime, endTime);
+
         // Display results
-        System.out.println("BST Insertion Time: " + bstInsertionTime.toNanos() + " nanoseconds");
-        System.out.println("Trie Insertion Time: " + trieInsertionTime.toNanos() + " nanoseconds");
-        System.out.println("BST Deletion Time: " + bstDeletionTime.toNanos() + " nanoseconds");
-        System.out.println("Trie Deletion Time: " + trieDeletionTime.toNanos() + " nanoseconds");
-        System.out.println("BST Search Time: " + bstSearchTime.toNanos() + " nanoseconds");
-        System.out.println("Trie Search Time: " + trieSearchTime.toNanos() + " nanoseconds");
+        System.out.println("** Measuring Insert Time **");
+        System.out.println("BST Insertion Time : " + bstInsertionTime.toNanos() + " nanoseconds");
+        System.out.println("Trie Insertion Time: " + trieInsertionTime.toNanos() + " nanoseconds\n");    
+        System.out.println("** Measuring Search Time **");
+        System.out.println("BST Search Time    : " + bstSearchTime.toNanos() + " nanoseconds");
+        System.out.println("Trie Search Time   : " + trieSearchTime.toNanos() + " nanoseconds\n");   
+        System.out.println("** Measuring Delete Time **");
+        System.out.println("BST Deletion Time  : " + bstDeletionTime.toNanos() + " nanoseconds");
+        System.out.println("Trie Deletion Time : " + trieDeletionTime.toNanos() + " nanoseconds\n");
     }
 
     // Helper method to generate random book titles
