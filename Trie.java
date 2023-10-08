@@ -121,7 +121,7 @@ public class Trie {
         }
 
         if (trieNode.children.containsKey('0')) {
-            // If '0' is found, print child TrieNode.
+            // If '0' is found, return last node.
             return trieNode.children.get('0');
         }
 
