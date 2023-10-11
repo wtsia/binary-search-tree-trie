@@ -52,3 +52,5 @@ Thumbs.db
 
 # compiled Java classes
 out/
+
+*.zip
